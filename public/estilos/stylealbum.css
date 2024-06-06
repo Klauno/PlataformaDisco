@@ -1,0 +1,138 @@
+/* stylealbum.css */
+
+/* Resetear márgenes y padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo para el cuerpo */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Fondo de la página */
+.background-image {
+  background-image: url(https://www.gratefulweb.com/sites/default/files/inline-images/9A4A1051.JPG);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Estilo para el título "Albums" */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff; /* Color blanco */
+  margin-top: 20px; /* Espacio superior */
+  margin-bottom: 30px; /* Espacio inferior */
+  text-align: center; /* Centrado horizontal */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+}
+
+/* Estilo para el contenedor principal */
+.ml-1\/6 {
+  margin-left: 16.66666667%; /* Esto equivale a 1/6 en unidades de medida */
+}
+
+/* Ajustes para dispositivos pequeños */
+@media screen and (max-width: 768px) {
+  /* Estilo para el título en dispositivos pequeños */
+  h1 {
+    font-size: 2rem; /* Reduce el tamaño de la fuente */
+    margin-top: 10px; /* Reduce el espacio superior */
+    margin-bottom: 20px; /* Reduce el espacio inferior */
+  }
+}
+
+/* Estilo para la barra lateral */
+.sidebar {
+  width: 100%; /* Ajusta el ancho a 100% */
+  max-width: 200px; /* Establece un ancho máximo */
+}
+
+/* Estilo para los enlaces en la barra lateral */
+.sidebar a {
+  margin: 10px 0; /* Ajusta el margen de los enlaces */
+}
+
+/* Estilo para los álbumes */
+.albums {
+  margin-left: 0; /* Elimina el margen izquierdo */
+  padding: 10px; /* Ajusta el padding */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Cambia el tamaño mínimo de las columnas */
+  gap: 5px; /* Reduce el espacio entre los álbumes */
+}
+
+/* Estilo para los álbumes individuales */
+.albums-individual {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 8px; /* Ajusta el espacio interior */
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+/* Estilo para los álbumes individuales en hover */
+.albums-individual:hover {
+  transform: scale(1.05);
+}
+
+/* Estilo para las imágenes de los álbumes */
+.albums-individual img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 6px; /* Reduce el espacio inferior */
+}
+
+/* Estilo para los títulos de los álbumes */
+.albums-individual h2 {
+  font-size: 14px; /* Reduce el tamaño de la fuente */
+  color: #333;
+  margin: 6px 0; /* Reduce el espacio superior e inferior */
+}
+
+/* Estilo para los iconos */
+.albums-individual .trashCustom,
+.albums-individual .addCustom,
+.albums-individual .editCustom {
+  cursor: pointer;
+  margin: 2px; /* Reduce el espacio entre los iconos */
+  transition: color 0.2s;
+}
+
+/* Estilo para el icono de basura en hover */
+.albums-individual .trashCustom:hover {
+  color: red;
+}
+
+/* Estilo para el icono de añadir canción en hover */
+.albums-individual .addCustom:hover {
+  color: green;
+}
+
+/* Estilo para el icono de editar en hover */
+.albums-individual .editCustom:hover {
+  color: blue;
+}
+
+/* Estilo para el contenedor de la lista de canciones */
+.listDiv {
+  margin-top: 6px; /* Reduce el espacio superior */
+  text-align: left;
+}
+
+/* Estilo para cada canción en la lista */
+.songEach {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px; /* Ajusta el espacio interior */
+  margin: 3px 0; /* Reduce el espacio entre las canciones */
+}

@@ -1,0 +1,89 @@
+
+  
+  /* Estilo para el cuerpo */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif; /* Usar Arial como fuente predeterminada */
+  }
+  
+  /* Fondo de la página */
+  .background-image {
+    background-image: url('https://www.gratefulweb.com/sites/default/files/inline-images/9A4A1051.JPG');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Estilo para el contenedor principal */
+  #formContainer {
+    background-color: rgba(194, 65, 12, 0.75); /* Mismo color translúcido que la barra lateral */
+    border-radius: 8px;
+    padding: 20px;
+    width: 50%;
+    margin: 0 auto;
+    margin-left: 30%; /* Este margen izquierdo simula el ancho de la barra lateral */
+    font-family: Arial, sans-serif; /* Usar Arial como fuente */
+  }
+  
+  /* Estilo para los elementos del formulario */
+  .input-span {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    font-size: 1rem; /* Tamaño de fuente más pequeño */
+    color: #fff; /* Cambiar el color de las etiquetas a blanco para contraste */
+    margin-bottom: 6px;
+    font-family: Arial, sans-serif; /* Usar Arial como fuente */
+  }
+  
+  input[type="text"],
+  textarea,
+  input[type="number"] {
+    width: 100%;
+    font-family: Arial, sans-serif; /* Usar Arial como fuente */
+  }
+  
+  /* Estilo para la barra lateral */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 16.66667%; /* Ancho de la barra lateral */
+    background-color: rgba(194, 65, 12, 0.75); /* bg-orange-800 translúcido */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; /* Espacio en la parte superior */
+    font-family: Arial, sans-serif; /* Usar Arial como fuente */
+  }
+  
+  .sidebar a {
+    display: block; /* Asegura que los enlaces se muestren uno debajo del otro */
+    width: 100%; /* Los enlaces ocuparán todo el ancho de la barra lateral */
+    padding: 15px 10px; /* Espaciado interno */
+    margin: 5px 0; /* Espaciado externo */
+    color: white;
+    text-align: center; /* Centra el texto de los enlaces */
+    text-decoration: none;
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+    transition: background-color 0.3s, color 0.3s; /* Transición para el efecto hover */
+    font-family: Arial, sans-serif; /* Usar Arial como fuente */
+  }
+  
+  .sidebar a:hover {
+    color: #3f51b5; /* Cambia el color del texto al hacer hover */
+  }
+  
+  /* Estilo para el título */
+  .edit-album-title {
+    text-align: center;
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+    margin-top: 20px;
+    color: white; /* Cambiar el color del título a blanco para contraste */
+    font-family: Arial, sans-serif; /* Usar Arial como fuente */
+  }
+  

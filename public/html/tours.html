@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../estilos/styleprincipal.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ 
+</head>
+<body class="bg-gradient-to-r from-indigo-800">
+  <span id="welcome"></span>
+  <div>
+    <h1 class="font-bold text-4xl text-center p-20 underline">FECHAS DE SHOWS</h1>
+  </div>
+  <div>
+    <ul>
+      <li class="text-violet-50 text-lm  hover:text-xl flex justify-between items-center ml-12 mr-12"><span>04.05.24 MIAMI, FLORIDA NCL PEARL - EN EL CRUCERO AZUL 2024</span>
+        <button class=" boton text-xs bg-black text-white pt-3 pb-3 pl-10 pr-10 rounded-2xl" onclick="getTickets('MIAMI')">Comprar</button>
+      </li>
+      <li class="text-violet-50 text-lm  hover:text-xl flex justify-between items-center ml-12 mr-12"><span>05.09.24 SAN DIEGO, CALIFORNIA, EE.UU. HUMPHREYS</span>
+        <button class=" boton text-xs bg-black text-white pt-3 pb-3 pl-10 pr-10 rounded-2xl" onclick="getTickets('SAN DIEGO')">Comprar</button>
+      </li>
+      <li class="text-violet-50 text-lm  hover:text-xl flex justify-between items-center ml-12 mr-12"><span>05.11.24 RIVERSIDE, CA FOX PERFORMING ARTS CENTER</span>
+        <button class=" boton text-xs bg-black text-white pt-3 pb-3 pl-10 pr-10 rounded-2xl" onclick="getTickets('RIVERSIDE')">Comprar</button>
+      </li>
+      <li class="text-violet-50 text-lm  hover:text-xl flex justify-between items-center ml-12 mr-12"><span>29.06.24 PEACHTREE CITY, GEORGIA, EE.UU. ANFITEATRO FREDERICK BROWN JR.</span>
+        <button class=" boton text-xs bg-black text-white pt-3 pb-3 pl-10 pr-10 rounded-2xl" onclick="getTickets('PEACHTREE CITY')">Comprar</button>
+      </li>
+      <li class="text-violet-50 text-lm  hover:text-xl flex justify-between items-center ml-12 mr-12"><span>30.06.24 NASHVILLE, TENNESSEE AUDITORIO RYMAN</span>
+        <button class=" boton text-xs bg-black text-white pt-3 pb-3 pl-10 pr-10 rounded-2xl" onclick="getTickets('NASHVILLE')">Comprar</button>
+      </li>
+    </ul>
+    <button class="cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg border-blue-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" style="display: block; margin: 0 auto;">
+      <a href="index.html">Home</a>
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/tours.js"></script>
+</body>
+</html>

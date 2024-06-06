@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logIn</title>
+    <link rel="stylesheet" type="text/css" href="../estilos/styleaddalbum.css">
+    <link rel="icon" type="image/png" href="../images/logo.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="background-image">
+
+  <div class="sidebar fixed text-center h-screen w-full md:w-1/6 top-0 left-0 flex flex-col items-center bg-orange-800 bg-opacity-75">
+      <div class="mt-10">
+          
+      </div>
+      <div class="mt-10 flex flex-col items-center">
+          <a href="../html/home.html" class="my-5 text-white hover:text-indigo-950">Home</a>
+          <a href="../html/addAlbum.html" class="my-5 text-white hover:text-indigo-950">Agregar Album</a>
+          <a href="../html/albums.html" class="my-5 text-white hover:text-indigo-950">Albums</a>
+          <a href="./tours.html" class="my-5 text-white hover:text-indigo-950">Tours</a>
+          <a href="../html/logIn.html" class="my-5 text-white hover:text-indigo-950">Cerrar Sesion</a>
+      </div>
+  </div>
+
+  <div class="md:ml-1/6 p-2 mt-24 md:mt-0 flex flex-col items-center">
+      <h1 class="text-2xl font-bold text-center mb-2 text-white">Nuevo Album</h1>
+      <div id="formContainer" class="bg-orange-800 bg-opacity-75 text-white  p-8 rounded-lg block  my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700 ">
+          <div id="logInForm">
+              <form class="flex flex-col items-center">
+                  <span class="input-span">
+                      <label for="titulo" class="label" id="textTitulo">Titulo</label>
+                      <input type="text" name="Titulo" id="titulo" required class=" text-black block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+                  </span>
+                  <span class="input-span">
+                      <label for="descripcion" class="label">Descripcion</label>
+                      <textarea name="Descripcion" id="descripcion" cols="40" rows="5" style="resize: none" class=" text-black block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" ></textarea>
+                  </span>
+                  <span class="input-span">
+                      <label for="enlace" class="label" id="textEnlace">Enlace al album (Youtube o Spotify)</label>
+                      <input type="text" name="enlace" id="enlace"  class=" text-black block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+                  </span>
+                  <span class="input-span">
+                      <label for="fecha" class="label" id="date">Fecha de lanzamiento</label>
+                      <input type="number" name="Fecha" id="fecha" class=" text-black block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700 ">
+                  </span>
+                  <span class="input-span">
+                      <label for="portadaValue" class="label" id="portada">Portada</label>
+                      <input type="text" id="portadaValue" required name="portada" class=" text-black block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+                    </span>
+                    <span class="input-span "></span>
+                  <label for="Terminos" class="Terminos" id="Terminos">
+                    Esta de acuerdo con los
+                    <a href="../html/Terminos.html">Terminos y condiciones?</a>
+                    <input type="checkbox" required name="Terminos" /></label></span>
+                  <button id="submitButton" class="button-orange text-black text-2xl">Enviar</button>
+              </form>
+          </div>
+      </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/addAlbum.js"></script>
+</body>
+</html>

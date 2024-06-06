@@ -1,0 +1,15 @@
+/* Estilo para el cuerpo */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  /* Fondo de la página */
+  .background-image {
+    background-image: url(https://www.gratefulweb.com/sites/default/files/inline-images/9A4A1051.JPG);
+    background-size: cover;
+    background-position: center;
+  }

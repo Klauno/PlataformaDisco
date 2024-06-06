@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums</title>
+    <link rel="stylesheet" type="text/css" href="../estilos/styleprincipal.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="background-image">
+
+    <div class="sidebar fixed text-center h-screen w-full md:w-1/6 top-0 left-0 flex flex-col items-center bg-orange-800 bg-opacity-75">
+        <div class="mt-10">
+            <label for="" class="navItems">
+                <img src="" alt="error" class="w-16 h-16 border-4 border-white rounded-full bg-white" id="fotoUser">
+                <span id="nickName" class="block text-white mt-2">Usuario</span>
+            </label>
+        </div>
+        <div class="mt-10 flex flex-col items-center">
+            <a href="./addAlbum.html" class="my-5 text-white hover:text-indigo-950">Agregar Album</a>
+            <a href="./logIn.html" class="my-5 text-white hover:text-indigo-950">Cerrar Sesion</a>
+        </div>
+    </div>
+
+    <div class="content md:ml-1/6 p-8 mt-24 md:mt-0 flex flex-col items-center">
+        <h1 class="text-violet-50 text-4xl font-bold text-center">The Alan Parsons</h1>
+        <p class="text-violet-50 antialiased text-center mb-8 max-w-4xl">Alan Parsons es un ingeniero de sonido, productor musical, compositor, cantante y músico británico. Formó en 1975 en Londres la banda The Alan Parsons Project, grupo de rock progresivo activo hasta 1990. Su principal compositor y vocalista fue Eric Woolfson. Luego siguió su carrera como solista hasta la actualidad.</p> 
+        <h1 class="text-4xl text-white">Puedes ver los álbumes ya subidos!!!</h1>
+        <div class="flex flex-col items-center justify-center mb-8 text-center">
+            <a href="./albums.html">
+                <button class="bg-orange-800 hover:bg-orange-900 text-white py-2 px-4 rounded-full mt-4">
+                    <span class="text" id="registerText">Click Aquí!</span>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/home.js"></script>
+    <link rel="stylesheet" href="../estilos/styleprincipal.css" /> 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>logIn</title>
+    <link rel="stylesheet" href="../estilos/styleprincipal.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </head>
+  <body class="background-image">
+      <!-- fondo contenedor (background container) -->
+      <div class="bg-[url('https://www.gratefulweb.com/sites/default/files/inline-images/9A4A1051.JPG')] h-screen bg-center bg-cover bg-no-repeat flex justify-center items-center">
+          <div class="flex flex-col justify-center items-center text-center w-96 h-auto p-6 rounded-2xl bg-black bg-opacity-75 text-red-600 border-2 border-orange-700 shadow-lg shadow-red-700" id="logInForm"    >
+          <h2 class="text-center text-2xl font-bold mb-6 tracking-wider">Login</h2>
+          <!-- formulario (form) -->
+          <form id="formulario" class="w-72">
+            <input type="text" id="email" name="email" placeholder="Email" required class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white" />
+            <input type="password" id="password" name="password" placeholder="Contraseña" required class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white"/><br>
+            <span class="submit  w-full bg-orange-700 p-2 text-black rounded font-semibold my-4 hover:bg-orange-600 active:bg-orange-500 tracking-widest " id="submitted">Enviar</span><br><br>
+            <span class="span" id="submitButton">Todavia no tenes cuenta?<br>
+              <a href="./signUp.html">Crear una cuenta</a></span>
+          </form>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/logIn.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
+</html>

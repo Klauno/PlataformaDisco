@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../estilos/stylealbu.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="icon" href="./Imagenes/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Álbum</title>
+</head>
+<body class="background-image">
+  <div class="sidebar fixed text-center h-screen w-full md:w-1/6 top-0 left-0 flex flex-col items-center bg-orange-800 bg-opacity-75">
+    <div class="mt-20">
+     
+    </div>
+    <div class="mt-10 flex flex-col items-center">
+      <a href="../html/home.html" class="my-5 text-white hover:text-indigo-950">Home</a>
+      <a href="../html/Albums.html" class="my-5 text-white hover:text-indigo-950">Albums</a>
+      <a href="../html/editAlbum.html" class="my-5 text-white hover:text-indigo-950">Editar Álbum</a>
+      <a href="../html/addAlbum.html" class="my-5 text-white hover:text-indigo-950">Agregar Álbum</a>
+      <a href="./addSong.html?albumId=123"  class="my-5 text-white hover:text-indigo-950">Agregar Canción</a>
+      <a href="../html/logIn.html" class="my-5 text-white hover:text-indigo-950">Cerrar Sesión</a>
+    </div>
+  </div>
+
+  <div class="content" style="margin-left: 20%;">
+    <div class="centered-container text-center text-white text-4xl">
+      <h1>Detalles del Álbum</h1>
+      <div class="album-details text-2xl"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/album.js"></script>
+</body>
+</html>

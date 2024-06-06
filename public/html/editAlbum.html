@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Álbum</title>
+  <link rel="stylesheet" type="text/css" href="../estilos/styleedit.css">
+  
+</head>
+<body class="background-image">
+
+  <div class="sidebar fixed text-center h-screen w-full md:w-1/6 top-0 left-0 flex flex-col items-center bg-orange-800 bg-opacity-75">
+      <div class="mt-10">
+          
+      </div>
+      <div class="mt-10 flex flex-col items-center">
+          <a href="../html/home.html" >Home</a>
+          <a href="../html/albums.html" >Ver Albums</a>
+          <a href="../html/editAlbum.html" >Editar Album</a>
+          <a href="../html/addAlbum.html" >Agregar Album</a>
+          <a href="../html/logIn.html" >Cerrar Sesion</a>
+      </div>
+  </div>
+  
+  <div id="formContainer"><h1 >Editar Álbum</h1>
+    <div id="logInForm">
+      <form>
+        <span class="input-span">
+          <label for="text" class="label" id="textTitulo">Título</label>
+          <input type="text" name="Titulo" id="titulo" required>
+        </span>
+        <span class="input-span">
+          <label for="textarea" class="label">Descripción</label>
+          <textarea name="Descripcion" id="descripcion" cols="30" rows="10" style="resize: none"></textarea>
+        </span>
+        <span class="input-span">
+          <label for="text" class="label" id="textEnlace">Enlace al álbum (Youtube o Spotify)</label>
+          <input type="text" name="enlace" id="enlace" required>
+        </span>
+        <span class="input-span">
+          <label for="date" class="date" id="date">Fecha de lanzamiento</label>
+          <input type="number" name="Fecha" id="fecha">
+        </span>
+        <span class="input-span">
+          <label for="portada" class="portada" id="portada">Portada</label>
+          <input type="text" id="portadaValue" required name="portada">
+        </span>
+        <input type="hidden" id="albumId" name="albumId" value="">
+        <button id="submitButton" class="button-orange mt-4">Enviar</button>
+        <button id="viewAlbumButton" type="button" class="button-orange mt-4">Ver Álbum</button>
+      </form>
+    </div> <button id="logoutButton">Cerrar Sesión</button>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/editAlbum.js"></script>
+</body>
+</html>

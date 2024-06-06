@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif; 
+}
+
+/* Fondo de la página */
+.background-image {
+  background-image: url('https://www.gratefulweb.com/sites/default/files/inline-images/9A4A1051.JPG');
+  background-size: cover;
+  background-position: center;
+}
+.album-details div {
+  text-align: left;
+  background-color: rgba(155, 63, 13, 0.75); /* Naranja translúcido */
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 350px; /* Reducido el ancho máximo */
+  overflow-y: auto; /* Desplazamiento vertical */
+}
+
+.album-details h2 {
+  font-size: 1.3rem; 
+  margin-bottom: 6px;
+}
+
+.album-details p {
+  font-size: 0.8rem; 
+  margin-bottom: 6px;
+  white-space: pre-wrap; /* Asegura los saltos de línea y espacios */
+}
+
+.album-details a {
+  font-size: 0.8rem; 
+  margin-bottom: 6px;
+}
+
+.album-details img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 10px; /* Reducido el margen superior */
+}
