@@ -19,7 +19,7 @@ const renderAlbums = (album) => {
   let albumId = album._id ? album._id : "";
   let linkAlbum = album.link ? album.link : "";
   imgAlbum.setAttribute("src", urlPortada);
-  iconTrash.classList.add("ri-delete-bin-7-line", "trashCustom");
+  iconTrash.classList.add("ri-delete-bin-7-line", "deleteIcon");
   addSongIcon.classList.add("ri-music-2-fill", "addCustom");
   editAlbumIcon.classList.add("ri-settings-5-fill", "editCustom");
   viewAlbumIcon.classList.add("ri-eye-fill", "viewCustom");
@@ -80,23 +80,42 @@ const renderAlbums = (album) => {
     });
   });
 
-  viewAlbumIcon.classList.add("ri-eye-fill", "viewCustom");
-  viewAlbumIcon.style.cursor = "pointer"; // Agregar esta línea para cambiar el cursor al ícono del ojo
-  const viewIcon = div.querySelector(".viewCustom");
-  viewIcon.addEventListener("mouseover", () => {
-    viewIcon.style.color = "orange"; // Cambia el color a tu preferencia al pasar el ratón sobre el ícono
-  });
-  viewIcon.addEventListener("mouseout", () => {
-    viewIcon.style.color = ""; // Revierte al color original cuando el ratón sale del ícono
+  // Evento para redirigir al enlace del álbum al hacer clic en el ícono de música
+  addSongIcon.addEventListener("click", () => {
+    if (linkAlbum) {
+      window.open(linkAlbum, '_blank');
+    } else {
+      console.error('El enlace al video no está definido en este álbum.');
+    }
   });
 
-  // Efecto de cambio de color al pasar el ratón sobre los iconos
-  const trashIcon = div.querySelector(".trashCustom");
+  // Eventos para el icono de vista
+  viewAlbumIcon.classList.add("ri-eye-fill", "viewCustom");
+  viewAlbumIcon.style.cursor = "pointer"; // Cambiar el cursor al ícono del ojo
+  const viewIcon = div.querySelector(".viewCustom");
+  viewIcon.addEventListener("mouseover", () => {
+    viewIcon.style.color = "orange"; // Cambiar el color al pasar el ratón sobre el ícono
+  });
+  viewIcon.addEventListener("mouseout", () => {
+    viewIcon.style.color = ""; // Revertir al color original cuando el ratón sale del ícono
+  });
+
+  // Eventos para el icono de basura
+  const trashIcon = div.querySelector(".deleteIcon");
   trashIcon.addEventListener("mouseover", () => {
     trashIcon.style.color = "red";
   });
   trashIcon.addEventListener("mouseout", () => {
     trashIcon.style.color = "";
+  });
+
+  // Eventos para el icono de música
+  const addIcon = div.querySelector(".addCustom");
+  addIcon.addEventListener("mouseover", () => {
+    addIcon.style.color = "green";
+  });
+  addIcon.addEventListener("mouseout", () => {
+    addIcon.style.color = "";
   });
 };
 
