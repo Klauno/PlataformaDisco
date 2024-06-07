@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro</title>
+  <link rel="icon"  href="./favicon.ico">
   <link rel="stylesheet" href="../estilos/stylesign.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -17,27 +18,32 @@
       <form id="formulario" class="w-72">
         <label for="Nombre" class="w-full">
           <input type="text" id="signUpName" name="Nombre" placeholder="Nombre" required class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white" />
+          <span class="text-red-500" id="nombreError"></span>
         </label>
         <label for="Apellido" class="w-full">
           <input type="text" id="Apellido" name="Apellido" placeholder="Apellido" required class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white" />
+          <span class="text-red-500" id="apellidoError"></span>
         </label>
         <label for="email" class="w-full">
           <input type="email" id="email" name="email" placeholder="E-Mail" required class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white" />
+          <span class="text-red-500" id="emailError"></span>
         </label>
         <label for="password" class="w-full">
           <input type="password" id="password" name="password" placeholder="Contraseña" required class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white" />
+          <span class="text-red-500" id="passwordError"></span>
         </label>
         <label for="profileImage" class="w-full">
-          <input type="url" id="profileImage" name="profileImage" placeholder="Foto (link)" required class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white" />
+          <input type="url" id="profileImage" name="profileImage" placeholder="Foto (link)"  class="w-full h-8 py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none text-white" />
+          <span class="text-red-500" id="profileImageError"></span>
         </label>
         <span class="submit  w-full bg-orange-700 p-2 text-black rounded font-semibold my-4 hover:bg-orange-600 active:bg-orange-500 tracking-widest " id="submitted">Enviar</span>
-            <span class="span" id="submitButton">
-            </form>
+      </form>
       <!-- párrafo de link a login (link paragraph to login) -->
       <p>¿Ya tienes una cuenta? <br><a href="logIn.html" class="underline text-orange-500 visited:text-orange-700">Inicia sesión aquí</a></p>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../js/signUp.js"></script>
 </body>
 </html>

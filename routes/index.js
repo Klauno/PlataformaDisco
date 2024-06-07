@@ -2,35 +2,66 @@ const express = require("express");
 const router = express.Router();
 const Usuario = require("../models/users");
 const Album = require("../models/albums");
+const jwt = require('jsonwebtoken');
 
-// Rutas para Usuarios
-router.post("/Usuario", async (req, res) => {
+const secret = 'your_secret_key';
+
+const saltRounds = 10; // Número de rondas de sal para bcrypt
+
+// Función para hashear la contraseña
+const hashPassword = async (contrasenia) => {
   try {
-    await Usuario.create(req.body);
-    res.status(200).send("Funciono todo bien");
+    const hashedPassword = await bcrypt.hash(contrasenia, saltRounds);
+    return hashedPassword;
   } catch (error) {
-    res.status(500).send("error del servidor");
+    throw new Error('Error al hashear la contraseña');
   }
-});
- 
+};
 
 router.post('/', async (req,res,next)=>{
-  const { contrasenia, email, nombre, apellido} = req.body
-  const hashed = await hashPassword(contrasenia)
-  const user = { 
-      contrasenia: hashed,
-       email,
-       nombre,
-       apellido}
-  try{
-    await User.create(user)
-    res.sendStatus(201)
-  }
-  catch(error){
-    res.status(500).send({error: error.message})
-  }
-})
+    const { contrasenia, email, nombre, apellido} = req.body
+    const hashed = await hashPassword(contrasenia)
+    const user = { 
+        contrasenia: hashed,
+         email,
+         nombre,
+         apellido}
+    try{
+      await Usuario.create(user)
+      res.sendStatus(201)
+    }
+    catch(error){
+      res.status(500).send({error: error.message})
+    }
+  })
 
+  router.post('/login', async (req, res) => {
+    const { email, contrasenia } = req.body;
+  
+    try {
+      const usuario = await Usuario.findOne({ email });
+  
+      if (!usuario) {
+        return res.status(401).json({ message: 'User not found' });
+      }
+  
+      const match = await bcrypt.compare(contrasenia, usuario.contrasenia);
+  
+      if (match) {
+        const payload = { email: usuario.email, id: usuario._id }; // Puedes incluir más datos del usuario si lo necesitas
+        const token = jwt.sign(payload, secret, { expiresIn: '24h' });
+        res.cookie('token', token);
+        res.status(200).json({ message: 'Login successful', token });
+      } else {
+        res.status(401).json({ message: 'Invalid password' });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+// Rutas para Usuarios
 
 
 router.get("/Usuario/todos", async (req, res) => {
@@ -76,11 +107,11 @@ router.put("/album/:id", async (req, res) => {
   }
 });
 
-router.put("/song/:id", async (req, res) => {
+router.put("/song/:idAlbum", async (req, res) => {
   try {
-    let album = await Album.findById(req.params.id);
+    let album = await Album.findById(req.params.idAlbum);
     album.canciones.push(req.body);
-    await Album.findByIdAndUpdate(req.params.id, album, { new: true });
+    await Album.findByIdAndUpdate(req.params.idAlbum, album, { new: true });
     res.status(200).send(album);
   } catch (error) {
     res.status(500).send({ "error al agregar una canción": error });

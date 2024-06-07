@@ -2,8 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
-const routes = require("./routes/index"); // Asegúrate de que la ruta sea correcta
+const routes = require("./routes/index");
 
+require('dotenv').config();
 
 const url = "mongodb+srv://oliverioclau:maxi2006@cluster0.kyyppkd.mongodb.net/Proyecto_2?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/", routes); // Uso del enrutador importado
+app.use("/", routes);
 
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
