@@ -3,10 +3,9 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
 const routes = require("./routes/index");
+require('dotenv').config();  // Cargar variables de entorno desde .env
 
-require('dotenv').config();
-
-const url = "mongodb+srv://oliverioclau:maxi2006@cluster0.kyyppkd.mongodb.net/Proyecto_2?retryWrites=true&w=majority&appName=Cluster0";
+const url = process.env.MONGO_URI;  // Usar la variable de entorno
 
 const app = express();
 
@@ -21,7 +20,7 @@ app.get("/health", (req, res) => {
 
 const connectMongo = async () => {
   try {
-    await mongoose.connect(url, );
+    await mongoose.connect(url);
     app.listen(3000, () => {
       console.log("Escuchando en el puerto 3000 y la base de datos conectada");
     });
