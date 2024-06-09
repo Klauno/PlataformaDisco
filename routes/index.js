@@ -2,67 +2,17 @@ const express = require("express");
 const router = express.Router();
 const Usuario = require("../models/users");
 const Album = require("../models/albums");
-const jwt = require('jsonwebtoken');
-
-const secret = 'your_secret_key';
-
-const saltRounds = 10; // Número de rondas de sal para bcrypt
-
-// Función para hashear la contraseña
-const hashPassword = async (contrasenia) => {
-  try {
-    const hashedPassword = await bcrypt.hash(contrasenia, saltRounds);
-    return hashedPassword;
-  } catch (error) {
-    throw new Error('Error al hashear la contraseña');
-  }
-};
-
-router.post('/', async (req,res,next)=>{
-    const { contrasenia, email, nombre, apellido} = req.body
-    const hashed = await hashPassword(contrasenia)
-    const user = { 
-        contrasenia: hashed,
-         email,
-         nombre,
-         apellido}
-    try{
-      await Usuario.create(user)
-      res.sendStatus(201)
-    }
-    catch(error){
-      res.status(500).send({error: error.message})
-    }
-  })
-
-  router.post('/login', async (req, res) => {
-    const { email, contrasenia } = req.body;
-  
-    try {
-      const usuario = await Usuario.findOne({ email });
-  
-      if (!usuario) {
-        return res.status(401).json({ message: 'User not found' });
-      }
-  
-      const match = await bcrypt.compare(contrasenia, usuario.contrasenia);
-  
-      if (match) {
-        const payload = { email: usuario.email, id: usuario._id }; // Puedes incluir más datos del usuario si lo necesitas
-        const token = jwt.sign(payload, secret, { expiresIn: '24h' });
-        res.cookie('token', token);
-        res.status(200).json({ message: 'Login successful', token });
-      } else {
-        res.status(401).json({ message: 'Invalid password' });
-      }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  });
 
 // Rutas para Usuarios
-
+router.post("/Usuario", async (req, res) => {
+  try {
+    await Usuario.create(req.body);
+    res.status(200).send("Funciono todo bien");
+  } catch (error) {
+    res.status(500).send("error del servidor");
+  }
+});
+ 
 
 router.get("/Usuario/todos", async (req, res) => {
   try {
