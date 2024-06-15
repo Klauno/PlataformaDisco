@@ -14,6 +14,7 @@ const renderAlbums = (album) => {
   const viewAlbumIcon = document.createElement("i");
   const listDiv = document.createElement("div");
 
+  // Usar imagen predeterminada si el campo de portada está vacío
   let urlPortada = album.portada ? album.portada : "https://imgur.com/0uSALUr.png";
   div.classList.add("albums-individual");
   let albumId = album._id ? album._id : "";
@@ -130,4 +131,12 @@ const getAlbums = async () => {
   }
 };
 
-getAlbums();
+document.addEventListener("DOMContentLoaded", () => {
+  getAlbums();
+
+  const logout = document.querySelector("#logout");
+  logout.addEventListener("click", () => {
+    // Aquí puedes agregar la lógica para cerrar sesión, por ejemplo:
+    window.location.href = "../html/logIn.html";
+  });
+});

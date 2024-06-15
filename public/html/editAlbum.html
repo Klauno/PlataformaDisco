@@ -4,26 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Álbum</title>
-  <link rel="icon"  href="./favicon.ico">
+  <link rel="icon" href="./favicon.ico">
   <link rel="stylesheet" type="text/css" href="../estilos/styleedit.css">
-  
 </head>
 <body class="background-image">
 
   <div class="sidebar fixed text-center h-screen w-full md:w-1/6 top-0 left-0 flex flex-col items-center bg-orange-800 bg-opacity-75">
       <div class="mt-10">
-          
       </div>
       <div class="mt-10 flex flex-col items-center">
-          <a href="../html/home.html" >Home</a>
-          <a href="../html/albums.html" >Ver Albums</a>
-          <a href="../html/editAlbum.html" >Editar Album</a>
-          <a href="../html/addAlbum.html" >Agregar Album</a>
-          <a href="../html/logIn.html" >Cerrar Sesion</a>
+          <a href="../html/home.html" class="my-5 text-white hover:text-indigo-950">Home</a>
+          <a href="../html/albums.html" class="my-5 text-white hover:text-indigo-950">Ver Albums</a>
+          <a href="../html/editAlbum.html" class="my-5 text-white hover:text-indigo-950">Editar Album</a>
+          <a href="../html/addAlbum.html" class="my-5 text-white hover:text-indigo-950">Agregar Album</a>
+          <a id="logout" class="my-5 text-white hover:text-indigo-950 cursor-pointer">Cerrar Sesión</a>
       </div>
   </div>
   
-  <div id="formContainer"><h1 >Editar Álbum</h1>
+  <div id="formContainer">
+    <h1>Editar Álbum</h1>
     <div id="logInForm">
       <form>
         <span class="input-span">
@@ -50,7 +49,7 @@
         <button id="submitButton" class="button-orange mt-4">Enviar</button>
         <button id="viewAlbumButton" type="button" class="button-orange mt-4">Ver Álbum</button>
       </form>
-    </div> <button id="logoutButton">Cerrar Sesión</button>
+    </div>
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -58,4 +57,3 @@
   <script src="../js/editAlbum.js"></script>
 </body>
 </html>
-z

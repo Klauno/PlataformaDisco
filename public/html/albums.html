@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../estilos/stylealbum.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-  <link rel="icon"  href="./favicon.ico">
+  <link rel="icon" href="./favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Albums</title>
 
@@ -15,22 +15,19 @@
 <body class="background-image">
 
   <div class="sidebar fixed text-center h-screen w-full md:w-1/6 top-0 left-0 flex flex-col items-center bg-orange-800 bg-opacity-75">
-      <div class="mt-10">
-          
-      </div>
-      <div class="mt-10 flex flex-col items-center">
-          <a href="../html/home.html" class="my-5 text-white hover:text-indigo-950">Home</a>
-         
-          <a href="../html/addAlbum.html" class="my-5 text-white hover:text-indigo-950">Agregar Album</a>
-          <a href="../html/logIn.html" class="my-5 text-white hover:text-indigo-950">Cerrar Sesion</a>
-      </div>
-  </div>
-
-    <div class="ml-1/6">
-      <h1>Albums</h1>
-      <div class="albums"></div>
+    <div class="mt-10"></div>
+    <div class="mt-10 flex flex-col items-center">
+      <a href="../html/home.html" class="my-5 text-white hover:text-indigo-950">Home</a>
+      <a href="../html/addAlbum.html" class="my-5 text-white hover:text-indigo-950">Agregar Album</a>
+      <a id="logout" class="my-5 text-white hover:text-indigo-950 cursor-pointer">Cerrar Sesion</a>
     </div>
   </div>
+
+  <div class="ml-1/6">
+    <h1>Albums</h1>
+    <div class="albums"></div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../js/albums.js" type="module"></script>

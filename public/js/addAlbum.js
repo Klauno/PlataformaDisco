@@ -1,82 +1,71 @@
-let titulo = document.querySelector("#titulo");
-let descripcion = document.querySelector("#descripcion");
-let fecha = document.querySelector("#fecha");
-let enlace = document.querySelector("#enlace");
-let portada = document.querySelector("#portadaValue");
-let submit = document.querySelector("#submitButton");
-let done = false;
+document.addEventListener("DOMContentLoaded", function() {
+  // Obtener el ID del álbum del almacenamiento local
+  const albumId = localStorage.getItem("albumId");
 
-const newAlbum = async () => {
-  if (
-    titulo.value != "" &&
-    descripcion.value != "" &&
-    fecha.value != "" &&
-    enlace.value != "" &&
-    portada.value != ""
-  ) {
-    try {
-      const album = {
-        titulo: titulo.value,
-        descripcion: descripcion.value,
-        fecha: fecha.value,
-        link: enlace.value,
-        portada: portada.value,
-      };
-
-      axios.post("/album/agregar", album, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      done = true;
-    } catch (error) {
-      console.log(error);
-      done == false; 
-    }
-  } else {
-    if (titulo.value == "") {
-      titulo.classList.add("emptyLine");
-    } else {
-      titulo.classList.toggle("emptyLine");
-    }
-    if (descripcion.value == "") {
-      descripcion.classList.add("emptyLine");
-    } else {
-      descripcion.classList.toggle("emptyLine");
-    }
-    if (fecha.value == "") {
-      fecha.classList.add("emptyLine");
-    } else {
-      fecha.classList.toggle("emptyLine");
-    }
-    if (enlace.value == "") {
-      enlace.classList.add("emptyLine");
-    } else {
-      enlace.classList.toggle("emptyLine");
-    }
-    if (portada.value == "") {
-      portada.classList.add("emptyLine");
-    } else {
-      portada.classList.toggle("emptyLine");
-    }
-    
+  // Verificar si el ID del álbum obtenido del almacenamiento local es válido
+  if (!albumId) {
     Swal.fire({
       icon: 'error',
-      title: 'Oops...',
-      text: 'Los campos deben completarse antes de mandar el álbum',
+      title: 'Error',
+      text: 'ID del álbum no encontrado en el almacenamiento local'
     });
+    return;
   }
-};
 
-submit.addEventListener("click", async () => {
-  await newAlbum();
-  if (done == true) {
-    Swal.fire({
-      icon: 'success',
-      title: 'Éxito',
-      text: 'El álbum fue creado con éxito',
-    });
-    window.location.href = "./home.html";
-  }
+  // Eliminar las comillas del ID del álbum si las hay
+  const formattedAlbumId = albumId.replace(/^"(.*)"$/, "$1");
+  const addSongForm = document.getElementById("addSongForm");
+
+  addSongForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const titulo = document.getElementById("titulo").value;
+    const duracion = document.getElementById("duracion").value;
+    const link = document.getElementById("link").value;
+
+    if (!titulo || !duracion || !link) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Todos los campos son obligatorios'
+      });
+      return;
+    }
+
+    try {
+      const response = await axios.put(`/song/${formattedAlbumId}`, {
+        titulo: titulo,
+        duracion: duracion,
+        link: link,
+      });
+
+      if (response.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Canción agregada',
+          text: 'La canción ha sido agregada correctamente.'
+        });
+      }
+    } catch (error) {
+      console.error("Error al agregar la canción:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un problema al agregar la canción. Por favor, inténtalo nuevamente.'
+      });
+    }
+  });
+
+  // Event Listener para el botón de cerrar sesión
+  const logout = document.getElementById("logout");
+  logout.addEventListener("click", () => {
+    // Aquí puedes agregar la lógica para cerrar sesión, por ejemplo:
+    window.location.href = "../html/logIn.html";
+  });
+
+  // Event Listener para el botón de volver al álbum
+  const viewAlbumButton = document.getElementById("viewAlbumButton");
+  viewAlbumButton.addEventListener("click", function() {
+    window.location.href = `./album.html?albumId=${formattedAlbumId}`;
+  });
 });
-

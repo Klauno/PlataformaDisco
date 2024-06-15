@@ -4,8 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let items = document.querySelectorAll(".navItems");
     let usuarioFront = document.querySelector("#nickName");
     let fotoFront = document.querySelector("#fotoUser");
-    let logoutButton = document.querySelector("#logoutButton");
+    let logoutButton = document.querySelector("#logout");
 
+    // Cargar el usuario guardado desde localStorage
     const usuarioGuardado = localStorage.getItem("usuario");
     if (usuarioGuardado) {
         const usuarioObject = JSON.parse(usuarioGuardado);
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("No se encontró ningún usuario guardado en localStorage.");
     }
 
+    // Añadir evento para el navImg
     if (navImg) {
         navImg.addEventListener("click", () => {
             if (nav) {
@@ -31,10 +33,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Lógica para cerrar sesión
     if (logoutButton) {
         logoutButton.addEventListener("click", () => {
-            localStorage.removeItem("usuario");
-            window.location.href = "./logIn.html";
+            // Limpiar almacenamiento local
+            localStorage.removeItem('usuario'); // Elimina el objeto de usuario
+            localStorage.removeItem('authToken'); // Elimina el token de autenticación si existe
+            localStorage.removeItem('userData'); // Elimina otros datos de usuario si los hay
+
+            // También puedes limpiar el sessionStorage si es necesario
+            sessionStorage.clear();
+
+            // Opcional: eliminar cookies si las estás utilizando
+            // document.cookie = "nombreDeLaCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+            // Redirigir a la página de inicio de sesión
+            window.location.href = './login.html';
         });
     }
 });

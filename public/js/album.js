@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
           <a href="${album.link}" target="_blank" class="text-indigo-500 underline">Enlace</a>
           <p>${album.fecha}</p>
           <img src="${album.portada}" alt="Portada del álbum">
-          <button id="videoButton" class="text-indigo-500 underline">Ver Video</button>
         `;
 
         albumDetailsContainer.appendChild(albumElement);
@@ -44,12 +43,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         albumDetailsContainer.appendChild(cancionesContainer);
-
-        // Agregar evento al botón de video
-        const videoButton = document.getElementById('videoButton');
-        videoButton.addEventListener('click', function() {
-          window.open(album.videoLink, '_blank');
-        });
 
         // Agregar evento al icono de la papelera para eliminar la canción
         cancionesContainer.querySelectorAll('.deleteIcon').forEach(deleteIcon => {
@@ -85,6 +78,19 @@ document.addEventListener("DOMContentLoaded", function() {
             }
           });
         });
+
+        // Event Listener para el botón "Volver al Álbum"
+        const viewAlbumButton = document.getElementById('viewAlbumButton');
+        viewAlbumButton.addEventListener('click', function() {
+          window.location.href = '../html/Albums.html'; // Ajusta la ruta según la ubicación correcta de Albums.html
+        });
+
+        // Event Listener para el botón "Cerrar Sesión"
+        const logoutButton = document.getElementById('logoutButton');
+        logoutButton.addEventListener('click', function() {
+          window.location.href = '../html/logIn.html'; // Ajusta la ruta según la ubicación correcta de logIn.html
+        });
+
       })
       .catch(function(error) {
         console.error('Error al obtener los detalles del álbum:', error);

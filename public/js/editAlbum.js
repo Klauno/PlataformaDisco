@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const fechaInput = document.getElementById("fecha");
   const portadaInput = document.getElementById("portadaValue");
   const submitButton = document.getElementById("submitButton");
-  const logoutButton = document.getElementById("logoutButton");
+  const logoutButton = document.getElementById("logout");
   const viewAlbumButton = document.getElementById("viewAlbumButton");
 
   // Función para obtener los valores del formulario
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
     enviarInfo(); // Llama a la función para enviar la información
   });
 
-  // Event Listener para el botón de cerrar sesión
+  // Event Listener para el enlace de cerrar sesión
   logoutButton.addEventListener("click", function() {
     logOut(); // Llama a la función para cerrar sesión
   });
@@ -84,10 +84,21 @@ document.addEventListener("DOMContentLoaded", function() {
       title: 'Cerrando sesión...',
       showConfirmButton: false,
       timer: 1500,
-      
       timerProgressBar: true
     }).then(() => {
-      window.location.href = "../index.html"; // Redirige a la página de inicio
+      // Limpiar almacenamiento local
+      localStorage.removeItem('usuario'); // Elimina el objeto de usuario
+      localStorage.removeItem('authToken'); // Elimina el token de autenticación si existe
+      localStorage.removeItem('userData'); // Elimina otros datos de usuario si los hay
+
+      // También puedes limpiar el sessionStorage si es necesario
+      sessionStorage.clear();
+
+      // Opcional: eliminar cookies si las estás utilizando
+      // document.cookie = "nombreDeLaCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+      // Redirigir a la página de inicio de sesión
+      window.location.href = '../html/logIn.html';
     });
   }
 
