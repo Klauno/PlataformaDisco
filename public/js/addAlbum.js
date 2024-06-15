@@ -1,71 +1,127 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Obtener el ID del álbum del almacenamiento local
-  const albumId = localStorage.getItem("albumId");
+  const titulo = document.querySelector("#titulo");
+  const descripcion = document.querySelector("#descripcion");
+  const fecha = document.querySelector("#fecha");
+  const enlace = document.querySelector("#enlace");
+  const portada = document.querySelector("#portadaValue");
+  const submit = document.querySelector("#submitButton");
+  const form = document.querySelector("#albumForm");
+  let done = false;
 
-  // Verificar si el ID del álbum obtenido del almacenamiento local es válido
-  if (!albumId) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'ID del álbum no encontrado en el almacenamiento local'
-    });
-    return;
-  }
+  const newAlbum = async () => {
+    let valid = true;
+    let errorMsg = "";
 
-  // Eliminar las comillas del ID del álbum si las hay
-  const formattedAlbumId = albumId.replace(/^"(.*)"$/, "$1");
-  const addSongForm = document.getElementById("addSongForm");
+    // Validación de campos requeridos
+    if (titulo.value.trim() === "") {
+      titulo.classList.add("emptyLine");
+      valid = false;
+      errorMsg += "El campo título no puede estar vacío.\n";
+    } else {
+      titulo.classList.remove("emptyLine");
+    }
 
-  addSongForm.addEventListener("submit", async function(event) {
-    event.preventDefault();
+    if (descripcion.value.trim() === "") {
+      descripcion.classList.add("emptyLine");
+      valid = false;
+      errorMsg += "El campo descripción no puede estar vacío.\n";
+    } else {
+      descripcion.classList.remove("emptyLine");
+    }
 
-    const titulo = document.getElementById("titulo").value;
-    const duracion = document.getElementById("duracion").value;
-    const link = document.getElementById("link").value;
+    if (fecha.value.trim() === "") {
+      fecha.classList.add("emptyLine");
+      valid = false;
+      errorMsg += "El campo fecha no puede estar vacío.\n";
+    } else {
+      fecha.classList.remove("emptyLine");
 
-    if (!titulo || !duracion || !link) {
+      // Validación de fecha: verificar si está entre 1950 y 2024
+      const inputDate = new Date(fecha.value);
+      const minDate = new Date("1950-01-01");
+      const maxDate = new Date("2024-12-31");
+      if (!(inputDate >= minDate && inputDate <= maxDate)) {
+        valid = false;
+        errorMsg += "La fecha debe estar entre el 1 de enero de 1950 y el 31 de diciembre de 2024.\n";
+      }
+    }
+
+    if (enlace.value.trim() === "") {
+      enlace.classList.add("emptyLine");
+      valid = false;
+      errorMsg += "El campo enlace no puede estar vacío.\n";
+    } else {
+      enlace.classList.remove("emptyLine");
+    }
+
+    // Validación de campo de portada (opcional)
+    // No se agrega al errorType si está vacío
+    if (portada.value.trim() !== "") {
+      
+    }
+
+    if (!valid) {
       Swal.fire({
         icon: 'error',
-        title: 'Error',
-        text: 'Todos los campos son obligatorios'
+        title: 'Error en el formulario',
+        text: errorMsg,
       });
-      return;
+      return false;
     }
 
     try {
-      const response = await axios.put(`/song/${formattedAlbumId}`, {
-        titulo: titulo,
-        duracion: duracion,
-        link: link,
+      const album = {
+        titulo: titulo.value,
+        descripcion: descripcion.value,
+        fecha: fecha.value,
+        link: enlace.value,
+        portada: portada.value.trim() || "https://imgur.com/0uSALUr.png", // Imagen predeterminada si no se proporciona una portada
+      };
+
+      const response = await axios.post("http://localhost:3000/album/agregar", album, {
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
-      if (response.status === 200) {
+      if (response.status === 200 || response.status === 201) {
+        done = true;
         Swal.fire({
           icon: 'success',
-          title: 'Canción agregada',
-          text: 'La canción ha sido agregada correctamente.'
+          title: 'Éxito',
+          text: 'El álbum fue creado con éxito',
+        });
+      } else {
+        done = false;
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Hubo un problema al crear el álbum',
         });
       }
     } catch (error) {
-      console.error("Error al agregar la canción:", error);
+      console.log(error);
+      done = false;
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Hubo un problema al agregar la canción. Por favor, inténtalo nuevamente.'
+        text: 'Hubo un problema al crear el álbum',
       });
+    }
+    return done;
+  };
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const isFormValid = await newAlbum();
+    if (isFormValid) {
+      // Reset form if needed
+      form.reset();
     }
   });
 
-  // Event Listener para el botón de cerrar sesión
-  const logout = document.getElementById("logout");
+  const logout = document.querySelector("#logout");
   logout.addEventListener("click", () => {
-    // Aquí puedes agregar la lógica para cerrar sesión, por ejemplo:
     window.location.href = "../html/logIn.html";
-  });
-
-  // Event Listener para el botón de volver al álbum
-  const viewAlbumButton = document.getElementById("viewAlbumButton");
-  viewAlbumButton.addEventListener("click", function() {
-    window.location.href = `./album.html?albumId=${formattedAlbumId}`;
   });
 });

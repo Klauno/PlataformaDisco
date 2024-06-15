@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
         albumElement.innerHTML = `
           <h2>${album.titulo}</h2>
           <p>${album.descripcion}</p>
-          <a href="${album.link}" target="_blank" class="text-indigo-500 underline">Enlace</a>
           <p>${album.fecha}</p>
           <img src="${album.portada}" alt="Portada del álbum">
         `;
