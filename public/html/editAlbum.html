@@ -5,49 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Álbum</title>
   <link rel="icon" href="./favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../estilos/styleedit.css">
+  <link rel="stylesheet" href="../estilos/styleedit.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="background-image">
+<body class="bg-cover bg-center bg-no-repeat" style="background-image: url('https://www.gratefulweb.com/sites/default/files/inline-images/9A4A1051.JPG');">
 
-  <div class="sidebar fixed text-center h-screen w-full md:w-1/6 top-0 left-0 flex flex-col items-center bg-orange-800 bg-opacity-75">
-      <div class="mt-10">
-      </div>
-      <div class="mt-10 flex flex-col items-center">
-          <a href="../html/home.html" class="my-5 text-white hover:text-indigo-950">Home</a>
-          <a href="../html/albums.html" class="my-5 text-white hover:text-indigo-950">Ver Albums</a>
-          <a href="../html/editAlbum.html" class="my-5 text-white hover:text-indigo-950">Editar Album</a>
-          <a href="../html/addAlbum.html" class="my-5 text-white hover:text-indigo-950">Agregar Album</a>
-          <a id="logout" class="my-5 text-white hover:text-indigo-950 cursor-pointer">Cerrar Sesión</a>
-      </div>
+  <div class="sidebar fixed h-screen w-16 md:w-1/5 top-0 left-0 flex flex-col items-center justify-center bg-orange-800 bg-opacity-75 text-white">
+    <div class="mt-10 flex flex-col items-center">
+      <a href="../html/home.html" class="my-5 hover:text-indigo-950">Home</a>
+      <a href="../html/albums.html" class="my-5 hover:text-indigo-950">Ver Albums</a>
+      <a href="../html/editAlbum.html" class="my-5 hover:text-indigo-950">Editar Album</a>
+      <a href="../html/addAlbum.html" class="my-5 hover:text-indigo-950">Agregar Album</a>
+      <a id="logout" class="my-5 cursor-pointer hover:text-indigo-950">Cerrar Sesión</a>
+    </div>
   </div>
   
-  <div id="formContainer">
-    <h1>Editar Álbum</h1>
+  <div id="formContainer" class="bg-orange-700 bg-opacity-75 rounded-lg w-3/4 md:w-3/5 mx-auto mt-10 p-6">
+    <h1 class="text-center text-white text-2xl mb-4">Editar Álbum</h1>
     <div id="logInForm">
       <form>
-        <span class="input-span">
-          <label for="text" class="label" id="textTitulo">Título</label>
-          <input type="text" name="Titulo" id="titulo" required>
-        </span>
-        <span class="input-span">
-          <label for="textarea" class="label">Descripción</label>
-          <textarea name="Descripcion" id="descripcion" cols="30" rows="10" style="resize: none"></textarea>
-        </span>
-        <span class="input-span">
-          <label for="text" class="label" id="textEnlace">Enlace al álbum (Youtube o Spotify)</label>
-          <input type="text" name="enlace" id="enlace" required>
-        </span>
-        <span class="input-span">
-          <label for="date" class="date" id="date">Fecha de lanzamiento</label>
-          <input type="number" name="Fecha" id="fecha">
-        </span>
-        <span class="input-span">
-          <label for="portada" class="portada" id="portada">Portada</label>
-          <input type="text" id="portadaValue" required name="portada">
-        </span>
+        <div class="mb-4">
+          <label for="titulo" class="text-white block">Título</label>
+          <input type="text" name="Titulo" id="titulo" class="w-full py-2 px-3 rounded bg-white">
+        </div>
+        <div class="mb-4">
+          <label for="descripcion" class="text-white block">Descripción</label>
+          <textarea name="Descripcion" id="descripcion" cols="30" rows="5" style="resize: none;" class="w-full py-2 px-3 rounded bg-white"></textarea>
+        </div>
+        <div class="mb-4">
+          <label for="enlace" class="text-white block">Enlace al álbum (Youtube o Spotify)</label>
+          <input type="text" name="enlace" id="enlace" class="w-full py-2 px-3 rounded bg-white">
+        </div>
+        <div class="mb-4">
+          <label for="fecha" class="text-white block">Fecha de lanzamiento</label>
+          <input type="number" name="Fecha" id="fecha" class="w-full py-2 px-3 rounded bg-white">
+        </div>
+        <div class="mb-4">
+          <label for="portada" class="text-white block">Portada</label>
+          <input type="text" id="portadaValue" required name="portada" class="w-full py-2 px-3 rounded bg-white">
+        </div>
         <input type="hidden" id="albumId" name="albumId" value="">
-        <button id="submitButton" class="button-orange mt-4">Enviar</button>
-        <button id="viewAlbumButton" type="button" class="button-orange mt-4">Ver Álbum</button>
+        <button id="submitButton" class="bg-orange-600 hover:bg-orange-800 text-white py-2 px-4 rounded w-full mt-4">Enviar</button>
+        <button id="viewAlbumButton" type="button" class="bg-orange-600 hover:bg-orange-800 text-white py-2 px-4 rounded w-full mt-4">Ver Álbum</button>
       </form>
     </div>
   </div>

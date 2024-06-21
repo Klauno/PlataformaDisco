@@ -1,0 +1,100 @@
+/* Reset de estilos básicos */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Fondo de imagen */
+  .background-image {
+    background-image: url('https://www.gratefulweb.com/sites/default/files/inline-images/9A4A1051.JPG');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Estilos para el contenedor principal */
+  .centered-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(121, 66, 32, 0.699); 
+    border-radius: 0.5rem;
+  }
+  
+  /* Estilos para los formularios y elementos dentro de centered-container */
+  .centered-container form,
+  .centered-container a,
+  .centered-container button {
+    display: block;
+    margin-top: 1rem;
+    width: 100%; /* Ancho completo */
+  }
+  
+  /* Estilos para los inputs */
+  .input-container {
+    margin-bottom: 1rem;
+  }
+  
+  .input-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #ccc2bb; /* Color del texto de las etiquetas */
+  }
+  
+  .input-container input {
+    width: 100%; /* Ancho completo */
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #b64d1d;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1); 
+  }
+  
+  /* Estilos para los botones */
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .button-container button {
+    flex: 1; /* Distribuir el espacio de manera uniforme */
+    width: 100%; 
+    font-size: 1rem; /* Tamaño de letra consistente para los botones */
+    padding: 0.5rem 1rem;
+    background-color: #f8792b; /* Color de fondo naranja */
+    color: #fff; /* Color del texto blanco */
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  }
+  
+  .button-container button:hover {
+    background-color: #e8681d; /* Color de fondo naranja oscuro en hover */
+  }
+  
+  /* Media query para dispositivos móviles */
+  @media screen and (max-width: 768px) {
+    .centered-container {
+      padding: 1rem;
+    }
+  
+    .input-container label {
+      font-size: 1rem;
+    }
+  
+    .input-container input {
+      font-size: 0.9rem;
+    }
+  
+    .button-container button {
+      width: 100%; /* Ancho completo en dispositivos móviles */
+      margin-bottom: 0.5rem;
+    }
+  }
+  
