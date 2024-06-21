@@ -43,3 +43,14 @@ body {
   border-radius: 10px;
   margin-top: 10px; /* Reducido el margen superior */
 }
+
+/* Hover effects */
+.link:hover {
+  color: #4A90E2;
+  text-decoration: underline;
+}
+
+.deleteIcon:hover {
+  color: #FF0000;
+  cursor: pointer;
+}

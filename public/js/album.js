@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         album.canciones.forEach(cancion => {
           const cancionElement = document.createElement('div');
           cancionElement.innerHTML = `
-            <p>Titulo: ${cancion.titulo} - Duración: ${cancion.duracion} - <a href="${cancion.link}" target="_blank" "class="text-indigo-500 underline"">Link</a></p>
+            <p>Titulo: ${cancion.titulo} - Duración: ${cancion.duracion} - <a href="${cancion.link}" target="_blank" class="text-indigo-500 underline link">Link</a></p>
             <i class="ri-delete-bin-7-line deleteIcon" data-song-id="${cancion._id}">Eliminar</i>
           `;
           cancionesContainer.appendChild(cancionElement);
