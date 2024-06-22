@@ -1,3 +1,5 @@
+// signUp.js
+
 // Selección de elementos del DOM
 let nombre = document.querySelector("#signUpName");
 let apellido = document.querySelector("#Apellido");
@@ -20,16 +22,26 @@ const newUser = async () => {
 
     // Realizar validaciones de formato
     if (!validarFormatoEmail(usuario.email)) {
-      alert("Error: Formato de correo electrónico inválido.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Formato de correo electrónico inválido.',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Cerrar'
+      });
       return;
     }
 
     if (!validarLongitudContrasenia(usuario.contrasenia)) {
-      alert("Error: La contraseña debe tener al menos 6 caracteres.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'La contraseña debe tener al menos 6 caracteres.',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Cerrar'
+      });
       return;
     }
-
-    
 
     // Si pasa todas las validaciones, realizar la solicitud de registro
     await axios.post("/Usuario", usuario, {
@@ -37,14 +49,32 @@ const newUser = async () => {
         "Content-Type": "application/json",
       },
     });
+
     done = true;
-    alert("¡Registro exitoso! Continuar para iniciar sesión.");
-    if (done) {
-      window.location.href = "./logIn.html"; // Redirigir a la página de inicio de sesión
-    }
+
+    // Mostrar SweetAlert2 de registro exitoso
+    Swal.fire({
+      icon: 'success',
+      title: '¡Registro exitoso!',
+      text: 'Continuar para iniciar sesión.',
+      showConfirmButton: false,
+      timer: 2000
+    }).then(() => {
+      if (done) {
+        window.location.href = "./logIn.html"; // Redirigir a la página de inicio de sesión
+      }
+    });
+
   } catch (error) {
-    console.log(error);
-    alert("Hubo un problema al registrar el usuario.");
+    console.error("Hubo un problema al registrar el usuario:", error);
+    // Mostrar SweetAlert2 de error
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Hubo un problema al registrar el usuario. Por favor, inténtalo de nuevo.',
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Cerrar'
+    });
   }
 };
 

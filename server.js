@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const routes = require("./routes/index");
 require('dotenv').config();  // Cargar variables de entorno desde .env
@@ -8,7 +9,7 @@ require('dotenv').config();  // Cargar variables de entorno desde .env
 const url = process.env.MONGO_URI;  // Usar la variable de entorno
 
 const app = express();
-
+app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));

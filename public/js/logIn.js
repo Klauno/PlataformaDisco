@@ -1,54 +1,69 @@
-let submit = document.querySelector("#submitted")
-let email = document.querySelector("#email")
-let password = document.querySelector("#password")
-let valorEmail, valorPassword
-let done = false
+// logIn.js
 
-const renderUsers = (user) => {
-  let urlPortada = user.portada ? user.portada : "../images/user.png.png"
-  console.log(urlPortada)
-}
+// Selección de elementos del DOM
+let correo = document.querySelector("#email");
+let contrasenia = document.querySelector("#password");
+let submit = document.querySelector("#submitted");
 
-const getUsers = async () => {
+// Función asíncrona para iniciar sesión
+const loginUser = async () => {
   try {
-    const response = await axios.get("../Usuario/todos")
-    response.data.Usuarios.map((user) => {
-      if (user.email === email.value && user.contrasenia === password.value) {
-        const usuario = {
-          nombre: user.nombre,
-          apellido: user.apellido,
-          email: user.email,
-          contrasenia: user.contrasenia,
-          foto: user.foto,
-        }
+    const usuario = {
+      email: correo.value,
+      contrasenia: contrasenia.value,
+    };
 
-        localStorage.setItem("usuario", JSON.stringify(usuario))
-        done = true
-      }
-    })
+    // Realizar la solicitud de inicio de sesión
+    const response = await axios.post("/Usuario/login", usuario, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    // Verificar la respuesta del servidor
+    if (response.status === 200) {
+      // Almacenar datos en localStorage
+      const userData = {
+        nombre: response.data.nombre,
+        apellido: response.data.apellido,
+        foto: response.data.foto,
+      };
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      // Mostrar SweetAlert2 de inicio de sesión exitoso y redirigir
+      Swal.fire({
+        icon: 'success',
+        title: 'Inicio de sesión exitoso!',
+        showConfirmButton: false,
+        timer: 1500
+      }).then(() => {
+        window.location.href = "./home.html";
+      });
+
+    } else {
+      // Mostrar SweetAlert2 de inicio de sesión fallido
+      Swal.fire({
+        icon: 'error',
+        title: 'Inicio de sesión fallido',
+        text: 'Verifica tus credenciales e intenta nuevamente.',
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Cerrar'
+      });
+    }
   } catch (error) {
-    console.log(error)
+    console.error("Error al iniciar sesión:", error);
+    // Mostrar SweetAlert2 de error de inicio de sesión
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Contraseña o Usuario incorrecto, volve a intentarlo.',
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Cerrar'
+    });
   }
-}
+};
 
+// Agregar el evento de clic al botón de envío
 submit.addEventListener("click", async () => {
-  if (email.value === "" || password.value === "") {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Por favor, completa todos los campos.',
-    });
-    return; // Detiene la ejecución si los campos están vacíos
-  }
-
-  await getUsers()
-  if (done) {
-    window.location.href = "./home.html"
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Mail y/o contraseña incorrecto/s',
-    });
-  }
-})
+  await loginUser();
+});
