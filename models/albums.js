@@ -24,6 +24,7 @@ const AlbumSchema = new mongoose.Schema({
   },
   canciones: [SongSchema], // Incorporación del esquema de las canciones dentro del álbum
   portada: { type: String, required: [true, "La portada del álbum es requerida"] },
+  link: { type: String, required: [true, "El enlace al álbum es requerido"] }, // Agregar este campo
 });
 
 module.exports = mongoose.model("Album", AlbumSchema);
