@@ -8,6 +8,9 @@ require('dotenv').config();  // Cargar variables de entorno desde .env
 
 const url = process.env.MONGO_URI;  // Usar la variable de entorno
 
+// Agregar console.log para verificar la URI
+console.log('URI de conexión:', url); // Este es el lugar donde agregas el console.log
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
